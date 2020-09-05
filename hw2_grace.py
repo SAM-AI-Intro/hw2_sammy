@@ -24,11 +24,24 @@ WEST = "W"
 
 
 def get_distance(sammy, medal):
+    """
+    Compute the distance from sammy to the given medal
+    :param sammy: (tuple) representing the position of Sammy in the grid
+    :param medal: (tuple) representing the position of a given medal
+    :return: (tuple) the distance unit horizontally and vertically
+    """
     x, y = sammy[0] - medal[0], sammy[1] - medal[1]
     return x, y
 
 
 def cost_distance(distance, carrot_cost):
+    """
+    Compute the number of carrots from the given distance
+    :param distance: (tuple) the distance unit horizontally and vertically
+    :param carrot_cost: (dictionary) representing the carrot consumption
+    per step for each direction
+    :return: (tuple) the number of carrots horizontally and vertically
+    """
     horizon, vertical = 0, 0
     if distance[0] >= 0:
         horizon = distance[0] * carrot_cost[WEST]
@@ -43,7 +56,7 @@ def cost_distance(distance, carrot_cost):
 
 def carrots_to_medal(sammy, medal, carrot_cost):
     """
-    Compute the number of carrots that  Sammy consumes to reach the
+    Compute the number of carrots that Sammy consumes to reach the
     given medal.
     :param sammy (tuple) representing the position of Sammy in the grid
     :param medal (tuple) representing the position of a given medal
